@@ -1,0 +1,59 @@
+There were several program ideas that we came up with. 
+We have listed these ideas below.
+
+    - Shooter game (similar to Duck hunt)
+    - Maze ( might be too hard to code)
+    - Frogger Type game **** ( This is the game we picked)
+    - Tetris type game
+    - Astroids *****
+    - Pinball
+    - Pong
+    - Matching card/symbol game *****
+    - Galliga
+    - Space Invaders ******
+
+Ultimatlly we decided to go with the game Frogger.
+we did like the other games that we put the **** symbol by
+however wtih the interest of time we think Frogger is challenging enough
+for 2 people where the others would need 5.
+
+
+
+Game setup ideas
+    - Main Scene
+        - play button
+    
+
+ Game Scene
+    - User controlled Character ( either arrows or AWSD)
+    - Car Movement
+    - Random speeds of cars in rows (1-5)
+    - Different lenghs of cars (1-3)
+    - Creating 5-6 rows that cars move in
+    - Collision detection
+
+Win Scene
+    - You Win announcement
+    - Restart button
+    - Quit game button
+
+Lose Scene
+    - You Lose announcement
+    - Restart button
+    - Quit game button
+
+
+Feature list
+
+    - Different levels to beat
+    - score based on time
+    - 3 lifes
+    - Different character selection
+    - possibly 2 player
+    - Trains obsticles
+    - water Obsticles 
+    - High score list for players who have done this the fastest or with most lives left.
+    
+
+
+
