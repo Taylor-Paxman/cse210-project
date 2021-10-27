@@ -43,7 +43,7 @@ class MyGame(arcade.Window):
 
         self.frog = arcade.SpriteList()
 
-        self.frog = arcade.Sprite("cse210-project-main/frogger/Pictures/frog.jpg", 0.3)
+        self.frog = arcade.Sprite("/Users/taylorpaxman/Desktop/School Fall 2021/CSE210/cse210-tc03/cse210-project/frogger/Pictures/frog.jpg", 0.3)
 
         self.frog.center_x = 400
         self.frog.center_y = 0
@@ -53,10 +53,8 @@ class MyGame(arcade.Window):
             for i in range(5):
                 car = arcade.Sprite("/Users/taylorpaxman/Desktop/School Fall 2021/CSE210/cse210-tc03/cse210-project/frogger/Pictures/convertible-car.png",0.05)
                 car.center_x = random.randrange(100, 700, 100)
-
                 car.center_y = y
-
-                car.change_x = 4 #random.randrange(1,5)
+                car.change_x = -3 #random.randrange(1,5)
                 self.car_list.append(car)
 
         for y in range(200, 600, 200):
@@ -99,7 +97,7 @@ class MyGame(arcade.Window):
         need it.
         """
         for car in self.car_list:
-            car.center_x -= car.change_x
+            car.center_x += car.change_x
             if car.center_x <= 0:
                 car.center_x = 800
         for truck in self.truck_list:
@@ -111,11 +109,16 @@ class MyGame(arcade.Window):
         self.car_list.update()
         self.frog.update()
 
-        player_collision_list = arcade.check_for_collision_with_list(self.frog, self.car_list)
+        player_collision_car = arcade.check_for_collision_with_list(self.frog, self.car_list)
+        player_collision_truck = arcade.check_for_collision_with_list(self.frog, self.truck_list)
 
-        for collision in player_collision_list:
-
+        for collision in player_collision_car:
             if self.car_list in collision.sprite_lists:
+                self.setup()
+                return
+
+        for collision in player_collision_truck:
+            if self.truck_list in collision.sprite_lists:
                 self.setup()
                 return
 
