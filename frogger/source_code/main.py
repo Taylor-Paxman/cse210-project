@@ -25,26 +25,35 @@ class MyGame(arcade.Window):
 
         arcade.set_background_color(arcade.color.AMAZON)
 
-        self.car_list = None
-
 
         # If you have sprite lists, you should create them here,
         # and set them to None
+        self.car_list = None
+        self.truck_list = None
 
     def setup(self):
         # Create your sprites and sprite lists here
         self.car_list = arcade.SpriteList()
-        self.car_list_x = arcade.SpriteList()
+        self.truck_list = arcade.SpriteList()
 
 
-        for y in range(100, 600, 100):
-            for i in range(3):
-                car = arcade.Sprite("/Users/taylorpaxman/Desktop/School Fall 2021/CSE210/cse210-tc03/cse210-project/frogger/Pictures/car.png",0.05)
-                car.center_x = random.randrange(100, 700)
+        for y in range(100, 700, 200):
+            for i in range(5):
+                car = arcade.Sprite("/Users/taylorpaxman/Desktop/School Fall 2021/CSE210/cse210-tc03/cse210-project/frogger/Pictures/convertible-car.png",0.05)
+                car.center_x = random.randrange(100, 700, 100)
                 car.center_y = y
 
-            car.change_x = random.randrange(1,5)
-            self.car_list.append(car)
+                car.change_x = 4 #random.randrange(1,5)
+                self.car_list.append(car)
+
+        for y in range(200, 600, 200):
+            for i in range(3):
+                truck = arcade.Sprite("/Users/taylorpaxman/Desktop/School Fall 2021/CSE210/cse210-tc03/cse210-project/frogger/Pictures/truck.png",0.20)
+                truck.center_x = random.randrange(100, 700, 150)
+                truck.center_y = y
+
+                truck.change_x = 1#random.randrange(1,5)
+                self.truck_list.append(truck)
 
         arcade.set_background_color(arcade.color.BATTLESHIP_GREY)
 
@@ -61,9 +70,7 @@ class MyGame(arcade.Window):
 
         # Call draw() on all your sprite lists below
         self.car_list.draw()
-
-
-
+        self.truck_list.draw()
 
 
     def on_update(self, delta_time):
@@ -73,10 +80,13 @@ class MyGame(arcade.Window):
         need it.
         """
         for car in self.car_list:
-            car.center_x += car.change_x
-            if car.center_x >= 800:
-                car.center_x = 0
-
+            car.center_x -= car.change_x
+            if car.center_x <= 0:
+                car.center_x = 800
+        for truck in self.truck_list:
+            truck.center_x += truck.change_x
+            if truck.center_x >= 800:
+                truck.center_x = 0
 
 
 
