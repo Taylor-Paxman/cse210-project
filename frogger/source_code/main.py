@@ -2,6 +2,8 @@
 Starting Template
 
 """
+import random
+
 import arcade
 
 SCREEN_WIDTH = 800
@@ -23,14 +25,29 @@ class MyGame(arcade.Window):
 
         arcade.set_background_color(arcade.color.AMAZON)
 
+        self.car_list = None
+
+
         # If you have sprite lists, you should create them here,
         # and set them to None
 
     def setup(self):
         # Create your sprites and sprite lists here
-        car = arcade.Sprite("Pictures/car.png")
-        
-        pass
+        self.car_list = arcade.SpriteList()
+
+
+        for y in range(100, 600, 100):
+            for i in range(3):
+                car = arcade.Sprite("/Users/taylorpaxman/Desktop/School Fall 2021/CSE210/cse210-tc03/cse210-project/frogger/Pictures/car.png",0.05)
+                car.center_x = random.randrange(100, 700)
+                car.center_y = y
+                self.car_list.append(car)
+
+
+
+        arcade.set_background_color(arcade.color.BATTLESHIP_GREY)
+
+
 
     def on_draw(self):
         """
@@ -42,6 +59,7 @@ class MyGame(arcade.Window):
         arcade.start_render()
 
         # Call draw() on all your sprite lists below
+        self.car_list.draw()
 
     def on_update(self, delta_time):
         """
