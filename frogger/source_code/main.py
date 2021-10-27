@@ -34,6 +34,7 @@ class MyGame(arcade.Window):
     def setup(self):
         # Create your sprites and sprite lists here
         self.car_list = arcade.SpriteList()
+        self.car_list_x = arcade.SpriteList()
 
 
         for y in range(100, 600, 100):
@@ -41,9 +42,9 @@ class MyGame(arcade.Window):
                 car = arcade.Sprite("/Users/taylorpaxman/Desktop/School Fall 2021/CSE210/cse210-tc03/cse210-project/frogger/Pictures/car.png",0.05)
                 car.center_x = random.randrange(100, 700)
                 car.center_y = y
-                self.car_list.append(car)
 
-
+            car.change_x = random.randrange(1,5)
+            self.car_list.append(car)
 
         arcade.set_background_color(arcade.color.BATTLESHIP_GREY)
 
@@ -61,13 +62,23 @@ class MyGame(arcade.Window):
         # Call draw() on all your sprite lists below
         self.car_list.draw()
 
+
+
+
+
     def on_update(self, delta_time):
         """
         All the logic to move, and the game logic goes here.
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-        pass
+        for car in self.car_list:
+            car.center_x += car.change_x
+            if car.center_x >= 800:
+                car.center_x = 0
+
+
+
 
     def on_key_press(self, key, key_modifiers):
         """
